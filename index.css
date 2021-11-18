@@ -1,0 +1,83 @@
+.mainBanner {
+    height: 249px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: 0.3rem;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "form card";
+}
+
+.container {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.submit-btn {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 112%;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.card-section {
+    margin-top: 2rem;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#title {
+    text-align: center;
+}
