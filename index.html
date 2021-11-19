@@ -26,11 +26,11 @@
                         <input type="text" placeholder="Enter the name of the destination" id="name" required onfocus="this.value=''"><br>
                         <label for="location">Location</label><br>
                         <input type="text" placeholder="Where is it located?" id="location" onfocus="this.value=''" required><br>
-                        <label for="photo">Photo</label><br>
-                        <input type="url" placeholder="Enter an image url of the place" id="photo" onfocus="this.value=''"><br>
+                        <!-- <label for="photo">Photo</label><br>
+                        <input type="url" placeholder="Enter an image url of the place" id="photo" onfocus="this.value=''"><br> -->
                         <label for="description">Description</label><br>
                         <textarea type="text" id="description" placeholder="Where is it located?" onfocus="this.value=''"></textarea><br>
-                        <button type="submit" class="btn btn-primary btn-submit" onclick="addDestination()">Add to
+                        <button type="submit" class="btn btn-primary btn-submit" onclick="addDestination(event)">Add to
                             List</button><br>
                     </form>
                 </section>
