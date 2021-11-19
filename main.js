@@ -1,5 +1,3 @@
-let SPLASH_ACCESS_KEY = 'Mv5ciX8ax_wEAlRrzkbbwDGyLPCAvwj0TWnM7aQrd_s';
-let SPLASH_SECRET_KEY = 'syrpXpbXjGNRkAFHW79JYUrgQRdALupUAqbtquceV8Y';
 // Use getElementsByClassName to take advantage of live/dynamic feature. using query selector returns a static list
 let cardContainer = document.getElementsByClassName('cards-container')[0];
 
@@ -16,7 +14,7 @@ let destDescription = form.querySelector("#description");
 // There are multiple ways of adding an event listener. You can use onclick, or .addEventListener Method
 function addDestination(e) {
     e.preventDefault();
-    cardContainer.append(createCard(destName.value, destLocation.value, destDescription.value));
+    cardContainer.append(createCard(destName.value, destLocation.value, destPhoto.value, destDescription.value));
     clearForm();
     // Make title dynamic. Check length of cardContainer
     if (cardContainer.children.length > 0) {
@@ -25,28 +23,25 @@ function addDestination(e) {
     }
 }
 
-function createCard(dest, loc, desc) {
+function createCard(dest, loc, photoUrl, desc) {
     let card = document.createElement("div");
     // Preference is to use property instead of attributes and attriubte setters, except in some cases.
     card.className = 'card text-dark bg-info mb-3';
-    card.style.width = '15rem';
+    card.style.maxWidth = '15rem';
     card.style.height = 'fit-content';
     // append instead of old school append-child
-    fetchPhotoApiImg(dest).then(url => {
-        card.prepend(createImg(url));
-    });
+    card.append(createImg(photoUrl));
     card.append(createCardBody(dest, loc, desc));
     return card;
 }
 
 function createImg(photoUrl) {
-    console.log(photoUrl);
     let img = document.createElement("img");
     img.className = 'card-img-top';
     img.style.objectFit = 'fill';
     img.style.height = '10rem';
     img.alt = destName;
-    if (isValidHttpUrl(photoUrl)) {
+    if (isValidHttpUrl(photoUrl)){
         img.setAttribute('src', `${photoUrl}`);
     } else {
         img.setAttribute('src', 'https://cavchronicle.org/wp-content/uploads/2018/03/top-travel-destination-for-visas-900x504.jpg');
@@ -57,7 +52,7 @@ function createImg(photoUrl) {
 function createCardBody(dest, loc, desc) {
     let cardBody = document.createElement("div");
     cardBody.className = 'card-body';
-
+    
     let destH5 = document.createElement("h5");
     destH5.className = 'card-header';
     destH5.style.backgroundColor = 'yellow'
@@ -95,7 +90,7 @@ function createButtons() {
 
     btnContainer.append(editBtn);
     btnContainer.append(removeBtn);
-
+    
     return btnContainer;
 }
 
@@ -155,31 +150,12 @@ function clearForm() {
 // Self explanatory
 function isValidHttpUrl(string) {
     let url;
-
-    try {
-        url = new URL(string);
-    } catch (_) {
-        return false;
-    }
-
-    return url.protocol === "http:" || url.protocol === "https:";
-}
-
-async function fetchPhotoApiImg(dest) {
-
-    let url = `https://api.unsplash.com/search/photos?query=${dest}&client_id=${SPLASH_ACCESS_KEY}&per_page=1&page=1`;
-    let response = await fetch(url);
-    console.log(response);
-    if (response.ok) {
-        let json = await response.json();
-        console.log(json);
-        console.log(json['results'][0]['urls']['raw']);
-        return json['results'][0]['urls']['raw'];
-    } else {
-        alert("HTTP-Error: " + response.status);
-    }
-}
-
-async function fetchWeatherApiTemp(dest){
     
-}
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;  
+    }
+  
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
